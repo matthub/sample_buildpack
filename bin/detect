@@ -1,4 +1,6 @@
-if File.exist?("#{@app_dir}/WEB-INF/lib/wink-1.4.jar")
+app_dir=ARGV[0]
+
+if File.exist?("#{app_dir}/WEB-INF/lib/wink-1.4.jar")
      return "apche-wink-1.4"
     
 else
