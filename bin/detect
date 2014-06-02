@@ -1,8 +1,8 @@
-app_dir=ARGV[0]
+BUILD_DIR=$1
 
-if File.exist?("#{app_dir}/WEB-INF/lib/wink-1.4.jar")
-     return "apche-wink-1.4"
-    
-else
-        exit 1
-end
+JAVA_WEB_DIR="WEB-INF/lib"
+
+if [ -n "$(find ${BUILD_DIR}/${JAVA_WEB_DIR} -name 'wink.*.jar')" ]; then
+echo "Wink"
+   exit 0
+fi
