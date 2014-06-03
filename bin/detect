@@ -1,6 +1,6 @@
-require 'pathname'
 
-if Pathname.new(ARGV.first).join("WEB-INF/geronimo-web.xml").exist?
+
+if File.exist?("ARGV.first/WEB-INF/lib/wink-1.4.jar")
   puts "Apache Geronimo"
   exit 0
 else
