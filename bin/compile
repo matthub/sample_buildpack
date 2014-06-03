@@ -1,2 +1,1 @@
-print "compile script of Geronimo buildapck!!!!!"
-exit 0
+puts "compile script of Geronimo buildapck!!!!!"
