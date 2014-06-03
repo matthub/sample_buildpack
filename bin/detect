@@ -1,8 +1,9 @@
-BUILD_DIR=$1
+require 'pathname'
 
-JAVA_WEB_DIR="WEB-INF/lib"
-
-if [ -n "$(find ${BUILD_DIR}/${JAVA_WEB_DIR} -name 'wink.*.jar')" ]; then
-echo "Wink"
-   exit 0
-fi
+if Pathname.new(ARGV.first).join("WEB-INF/geronimo-web.xml").exist?
+  puts "Apache Geronimo"
+  exit 0
+else
+  puts "no"
+  exit 1
+end
