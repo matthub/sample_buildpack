@@ -1,6 +1,6 @@
 
 
-if File.exist?("ARGV.first/WEB-INF/lib/wink-1.4.jar")
+if File.exist?("ARGV.first/WEB-INF/lib/geronimo-web.xml")
   puts "Apache Geronimo"
   exit 0
 else
