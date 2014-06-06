@@ -1,10 +1,10 @@
 
 #!/usr/bin/env ruby
-#if File.exist?("ARGV.first/WEB-INF/lib/geronimo-web.xml")
+if File.exist?("ARGV.first/WEB-INF/lib/geronimo-web.xml")
   puts "Apache Geronimo"
   exit 0
-#else
- # puts "no"
-  #exit 1
-#end
-# end of the file
+else
+  puts "no"
+  exit 1
+end
+
