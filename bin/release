@@ -1,0 +1,4 @@
+{
+  "config_vars" => {}, # environment variables that should be set
+  "default_process_types" => {} # 
+}.to_yaml
