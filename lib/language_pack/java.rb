@@ -21,13 +21,10 @@ module LanguagePack
     
     def compile
       Dir.chdir(@build_path) do
-        #install_java
-        puts "Build path="
-        puts @build_path
-         puts "Cache path="
-        puts @cache_path
+        install_java
         
-        #setup_profiled
+        
+        setup_profiled
       end
     end
 
