@@ -7,9 +7,10 @@ module LanguagePack
   # detects which language pack to use
   # @param [Array] first argument is a String of the build directory
   # @return [LanguagePack] the {LanguagePack} detected
-  def self.detect(*args)
+  def self.compile(*args)
     Dir.chdir(args.first)
-
+    Java.install()
+    Geronimo.install()
     
   end
 
