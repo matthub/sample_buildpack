@@ -4,9 +4,9 @@ require "fileutils"
 module LanguagePack
   class Java
     
-
+    include LanguagePack::PackageFetcher
     DEFAULT_JDK_VERSION = "1.7".freeze
-
+    
     
 
     attr_reader :build_path, :cache_path
