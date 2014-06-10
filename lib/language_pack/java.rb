@@ -7,30 +7,32 @@ module LanguagePack
 
     DEFAULT_JDK_VERSION = "1.7".freeze
 
-    def self.use?
-      Dir.glob("**/*.jar").any? || Dir.glob("**/*.class").any?
-    end
+    
 
     attr_reader :build_path, :cache_path
 
     # changes directory to the build_path
     # @param [String] the path of the build dir
     # @param [String] the path of the cache dir
-    def initialize(build_path, cache_path=nil)
+    def compile(build_path, cache_path=nil)
       @build_path = build_path
       @cache_path = cache_path
+      Dir.chdir(build_path) do
+        #install_java
+        puts "Build path="
+        puts @build_path
+         puts "Cache path="
+        puts @cache_path
+        
+        #setup_profiled
+      end
     end
 
     def name
       "Java"
-    end
-
-    def compile
-      Dir.chdir(build_path) do
-        install_java
-        setup_profiled
-      end
-    end
+  end
+      
+    
 
     def install_java
       FileUtils.mkdir_p jdk_dir
