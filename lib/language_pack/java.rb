@@ -19,7 +19,7 @@ module LanguagePack
       @cache_path = cache_path
     end
     
-    def compile()
+    def compile
       Dir.chdir(@build_path) do
         #install_java
         puts "Build path="
