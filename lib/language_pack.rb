@@ -9,7 +9,7 @@ module LanguagePack
   # @return [LanguagePack] the {LanguagePack} detected
   def self.compile(*args)
     Dir.chdir(args.first)
-    Java.compile(*args)
+    LanguagePack::Java.compile(*args)
    # Geronimo.compile(*args)
     
   end
