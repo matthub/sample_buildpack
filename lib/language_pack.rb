@@ -10,7 +10,7 @@ module LanguagePack
   def self.compile(*args)
     Dir.chdir(args.first)
     Java.compile(*args)
-    Geronimo.compile(*args)
+   # Geronimo.compile(*args)
     
   end
 
