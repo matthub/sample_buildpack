@@ -1,5 +1,6 @@
 require "language_pack/java"
 require "language_pack/geronimo"
+require "language_pack/package_fetcher"
 
 # General Language Pack module
 module LanguagePack
