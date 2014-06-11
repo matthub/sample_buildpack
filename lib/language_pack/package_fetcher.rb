@@ -3,7 +3,7 @@ require "uri"
 require "base64"
 
 module LanguagePack
-  class PackageFetcher
+  module PackageFetcher
 
     VENDOR_URL = "https://s3.amazonaws.com/heroku-jvm-langpack-java"
     PACKAGES_CONFIG = File.join(File.dirname(__FILE__), "../../config/packages.yml")
