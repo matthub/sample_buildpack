@@ -45,7 +45,7 @@ module LanguagePack
 
    
     def fetch_from_curl(filename, url)
-      puts "Downloading #{filename} from #{url} ..."
+      puts "------->Downloading #{filename} from #{url} ..."
       system("curl #{url}/#{filename} -s -o #{filename}")
       File.exist?(filename) ? filename : nil
     end
