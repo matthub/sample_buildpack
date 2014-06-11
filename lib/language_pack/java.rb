@@ -1,7 +1,7 @@
 require "yaml"
 require "fileutils"
 require "language_pack/package_fetcher"
-require 'liberty_buildpack/format_duration'
+require "language_pack/format_duration"
 
 module LanguagePack
   class Java
