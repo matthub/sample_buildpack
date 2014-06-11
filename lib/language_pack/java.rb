@@ -62,7 +62,7 @@ module LanguagePack
 
     def download_jdk(jdk_tarball)
       puts "Downloading JDK..."
-      fetched_package = fetch_jdk_package(java_version)
+      fetched_package = LanguagePack::PackageFetcher.fetch_jdk_package(java_version)
       FileUtils.mv fetched_package, jdk_tarball
     end
 
