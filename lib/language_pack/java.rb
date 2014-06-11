@@ -41,12 +41,12 @@ module LanguagePack
       jdk_tarball = "#{jdk_dir}/jdk.tar.gz"
       download_start_time = Time.now
       download_jdk jdk_tarball
-      puts "(#{(Time.now - download_start_time).duration})"
+      print "(#{(Time.now - download_start_time).duration})"
 
       puts "------->Unpacking JDK to #{jdk_dir}"
       download_start_time = Time.now
       tar_output = run_with_err_output "tar pxzf #{jdk_tarball} -C #{jdk_dir}"
-      puts "(#{(Time.now - download_start_time).duration})"
+      print "(#{(Time.now - download_start_time).duration})"
       FileUtils.rm_rf jdk_tarball
       unless File.exists?("#{jdk_dir}/bin/java")
         puts "Unable to retrieve the JDK"
