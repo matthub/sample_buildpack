@@ -1,5 +1,6 @@
 require "yaml"
 require "fileutils"
+require "language_pack/package_fetcher"
 
 module LanguagePack
   class Java
