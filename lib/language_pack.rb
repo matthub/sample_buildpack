@@ -12,7 +12,8 @@ module LanguagePack
     Dir.chdir(args.first)
     object1= Java.new(*args)
     object1.compile
-   # Geronimo.compile(*args)
+    object2= Geronimo.new(*args)
+    object2.compile(*args)
     
   end
 
