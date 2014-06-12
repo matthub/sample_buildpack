@@ -6,8 +6,7 @@ require "language_pack/format_duration"
 module LanguagePack
   class Geronimo
     
-    include LanguagePack::PackageFetcher
-    DEFAULT_JD
+    
     
     
 
@@ -23,10 +22,11 @@ module LanguagePack
     
     def compile
       Dir.chdir(@build_path) do
-        install_java
-        
-        
-        setup_profiled
+        install_geronimo
+        modify_web_xml
       end
     end
-
+   
+    def install_geronimo
+      
+    end
