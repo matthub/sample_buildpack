@@ -23,13 +23,14 @@ module LanguagePack
     def compile
       Dir.chdir(@build_path) do
         install_geronimo
-        modify_web_xml
+        #modify_web_xml
       end
     end
    
     def install_geronimo
        geronimo_package = geronimo_config["repository_root"]
        puts geronimo_package
+      puts "------->Downloading Geronimo  from #{geronimo_package} ..."
     end
     
      def geronimo_config
