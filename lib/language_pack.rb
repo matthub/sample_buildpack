@@ -13,7 +13,7 @@ module LanguagePack
     object1= Java.new(*args)
     object1.compile
     object2= Geronimo.new(*args)
-    object2.compile(*args)
+    object2.compile()
     
   end
 
