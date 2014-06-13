@@ -8,7 +8,7 @@ module LanguagePack
     
     
     
-    include LanguagePack::PackageFetche
+    include LanguagePack::PackageFetcher
     GERONIMO_CONFIG = File.join(File.dirname(__FILE__), "../../config/geronimo.yml")
     attr_reader :build_path, :cache_path
 
