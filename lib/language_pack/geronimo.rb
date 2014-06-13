@@ -31,9 +31,9 @@ module LanguagePack
        geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
        #puts geronimo_package
-       puts "------->Downloading #{filename}  from #{geronimo_package} ..."
+       puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
-       system("curl #{url}/#{filename} -s -o #{filename}")
+       system("curl #{geronimo_package}/#{filename} -s -o #{filename}")
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
