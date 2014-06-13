@@ -38,7 +38,7 @@ module LanguagePack
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
-       system "unzip -oq -d #{@build_dir} #{filename.path} 2>&1"
+       system "unzip -oq -d #{@build_dir} #{filename} 2>&1"
        puts "(#{(Time.now - download_start_time).duration})"
        
        
