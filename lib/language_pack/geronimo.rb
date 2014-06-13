@@ -9,7 +9,7 @@ module LanguagePack
     
     
     
-
+    GERONIMO_CONFIG = File.join(File.dirname(__FILE__), "../../config/geronimo.yml")
     attr_reader :build_path, :cache_path
 
     # changes directory to the build_path
@@ -28,5 +28,13 @@ module LanguagePack
     end
    
     def install_geronimo
-      
+       geronimo_package = geronimo_config["repository_root"]
+       puts geronimo_package
     end
+    
+     def geronimo_config
+      YAML.load_file(File.expand_path(GERONIMO_CONFIG))
+    end
+    
+  end
+end
