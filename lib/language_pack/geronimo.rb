@@ -8,7 +8,7 @@ module LanguagePack
     
     
     
-    
+    include LanguagePack::PackageFetche
     GERONIMO_CONFIG = File.join(File.dirname(__FILE__), "../../config/geronimo.yml")
     attr_reader :build_path, :cache_path
 
@@ -29,8 +29,18 @@ module LanguagePack
    
     def install_geronimo
        geronimo_package = geronimo_config["repository_root"]
-       puts geronimo_package
-      puts "------->Downloading Geronimo  from #{geronimo_package} ..."
+       filename = geronimo_config["filename"]
+       #puts geronimo_package
+       puts "------->Downloading #{filename}  from #{geronimo_package} ..."
+       download_start_time = Time.now
+       system("curl #{url}/#{filename} -s -o #{filename}")
+       puts "(#{(Time.now - download_start_time).duration})"
+       puts "------->Unpacking Geronimo"
+       download_start_time = Time.now
+       system "unzip -oq -d #{@build_dir} #{filename.path} 2>&1"
+       puts "(#{(Time.now - download_start_time).duration})"
+       
+       
     end
     
      def geronimo_config
