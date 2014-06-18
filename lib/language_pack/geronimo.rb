@@ -25,7 +25,7 @@ module LanguagePack
       Dir.chdir(@build_path) do
         geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
-        fetch_from_curl(geronimo_package,filename)||fetch_from_buildpack_cache(geronimo_package,filename)
+        fetch_from_buildpack_cache(geronimo_package,filename)||fetch_from_curl(geronimo_package,filename)
         #modify_web_xml
       end
     end
