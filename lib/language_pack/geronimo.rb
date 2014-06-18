@@ -37,7 +37,7 @@ module LanguagePack
        #puts geronimo_package
         geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
-       file_path = File.join(@cache_path, filename)
+       file_path = File.join(buildpack_cache_dir, filename)
       if File.exist?(file_path)
         puts "------>Copying #{filename} from the buildpack cache ..."
         FileUtils.cp(file_path, ".")
