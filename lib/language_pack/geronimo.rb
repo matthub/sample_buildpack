@@ -23,14 +23,15 @@ module LanguagePack
     
     def compile
       Dir.chdir(@build_path) do
-        install_geronimo
+        geronimo_package = geronimo_config["repository_root"]
+       filename = geronimo_config["filename"]
+        fetch_from_curl(geronimo_package,filename)||fetch_from_buildpack_cache(geronimo_package,filename)
         #modify_web_xml
       end
     end
    
-    def install_geronimo
-       geronimo_package = geronimo_config["repository_root"]
-       filename = geronimo_config["filename"]
+    def fetch_from_curl(geronimo_package,filename)
+       
        #puts geronimo_package
        puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
@@ -38,12 +39,19 @@ module LanguagePack
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
-       system "unzip  file #{filename} -d #{@build_dir}"
+       system "unzip  file #{filename} -d #{@build_path}"
         #system "unzip -oq -d #{@build_dir} #{filename} 2>&1"
        #unzip -o \"#{archive}/*\" -d \"#{destination_folder}\
        puts "(#{(Time.now - download_start_time).duration})"
        
        
+    end
+    def fetch_from_buildpack_cache(geronimo_package,filename)
+      file_path = File.join(@cache_path, filename)
+      return unless File.exist?(file_path)
+      puts "------>Copying #{filename} from the buildpack cache ..."
+      FileUtils.cp(file_path, ".")
+      File.expand_path(File.join(".", filename))
     end
     
      def geronimo_config
