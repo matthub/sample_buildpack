@@ -35,15 +35,8 @@ module LanguagePack
     def install_geronimo
        
        #puts geronimo_package
-        geronimo_package = geronimo_config["repository_root"]
+       geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
-       file_path = File.join(buildpack_cache_dir, filename)
-      if File.exist?(file_path)
-        puts "------>Copying #{filename} from the buildpack cache ..."
-        FileUtils.cp(file_path, ".")
-         File.expand_path(File.join(".", filename))
-    else
-      
     
        puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
@@ -51,11 +44,9 @@ module LanguagePack
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
-       #system "unzip  file #{filename} -d #{@build_path}"
-        system "unzip -oq -d #{@build_path} #{filename} 2>&1"
-       #unzip -o \"#{archive}/*\" -d \"#{destination_folder}\
+       system "unzip -oq -d #{@build_path} #{filename} 2>&1"
        puts "(#{(Time.now - download_start_time).duration})"
-     end
+     
        
     end
     def fetch_from_buildpack_cache(geronimo_package,filename)
