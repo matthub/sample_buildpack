@@ -16,11 +16,14 @@ module LanguagePack
     # changes directory to the build_path
     # @param [String] the path of the build dir
     # @param [String] the path of the cache dir
+    
     def initialize(build_path, cache_path=nil)
       @build_path = build_path
       @cache_path = cache_path
     end
-    
+    def buildpack_cache_dir
+      @cache_path || "/var/vcap/packages/buildpack_cache"
+    end
     def compile
       Dir.chdir(@build_path) do
        
