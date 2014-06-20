@@ -47,7 +47,7 @@ module LanguagePack
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
        #system "unzip -oq -d #{geronimo_zip} #{geronimo_dir} 2>&1"
-       run_with_err_output("unzip -oq -d #{geronimo_zip} #{geronimo_dir} && mv #{geronimo_dir}/geronimo-tomcat*/* #{geronimo_dir} && " +
+       run_with_err_output("unzip -oq -d #{geronimo_dir} #{geronimo_zip} && mv #{geronimo_dir}/geronimo-tomcat*/* #{geronimo_dir} && " +
               "rm -rf #{geronimo_dir}/geronimo-tomcat*")
        puts "(#{(Time.now - download_start_time).duration})"
         if File.exists?("#{geronimo_dir}/bin/geronimo.sh")
