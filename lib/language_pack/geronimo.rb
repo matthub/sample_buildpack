@@ -38,18 +38,18 @@ module LanguagePack
        geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
         FileUtils.mkdir_p geronimo_dir
-        geronimo_zip="#{geronimo_dir}/geronimo.zip"
+      geronimo_zip="#{geronimo_dir}/geronimo.zip"
        puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
-       system("curl #{geronimo_package}/#{filename} -s -o #{filename}")
+       system("curl #{geronimo_package}/#{filename} -s -o #{geronimo_zip}")
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
-       system "unzip -oq -d #{geronimo_dir} #{filename} 2>&1"
-       run_with_err_output("tar xzf #{tomcat_tarball} -C #{tomcat_dir} && mv #{tomcat_dir}/apache-tomcat*/* #{tomcat_dir} && " +
-              "rm -rf #{tomcat_dir}/apache-tomcat*")
+       #system "unzip -oq -d #{geronimo_zip} #{geronimo_dir} 2>&1"
+       run_with_err_output("unzip -oq -d #{geronimo_zip} #{geronimo_dir} && mv #{geronimo_dir}/geronimo-tomcat*/* #{geronimo_dir} && " +
+              "rm -rf #{geronimo_dir}/geronimo-tomcat*")
        puts "(#{(Time.now - download_start_time).duration})"
-        if File.exists?("#{geronimo_dir}/geronimo-tomcat6-javaee5-2.2.1/bin/geronimo.sh")
+        if File.exists?("#{geronimo_dir}/bin/geronimo.sh")
         puts "Retrieved Geronimo"
       else
          puts "unable to Retrieve Geronimo"
