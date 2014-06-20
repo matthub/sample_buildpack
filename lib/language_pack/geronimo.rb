@@ -46,7 +46,7 @@ module LanguagePack
        download_start_time = Time.now
        system "unzip -oq -d #{@build_path} #{filename} 2>&1"
        puts "(#{(Time.now - download_start_time).duration})"
-        if File.exists?("#{filename}/bin/geronimo.sh")
+        if File.exists?("#{@build_path}/#{filename}/bin/geronimo.sh")
         puts "Retrieved Geronimo"
       else
          puts "unable to Retrieve Geronimo"
@@ -58,6 +58,13 @@ module LanguagePack
     
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
+    end
+    def release
+      {
+          "addons" => [],
+          "config_vars" => {},
+          "default_process_types" => default_process_types
+      }.to_yaml
     end
      def default_process_types
       {
