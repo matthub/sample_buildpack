@@ -78,6 +78,9 @@ module LanguagePack
         "web" => "./bin/geronimo.sh run"
       }
     end
+     def run_with_err_output(command)
+      %x{ #{command} 2>&1 }
+    end
     
   end
 end
