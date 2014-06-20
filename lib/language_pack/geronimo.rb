@@ -37,16 +37,16 @@ module LanguagePack
        #puts geronimo_package
        geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
-    
+        FileUtils.mkdir_p geronimo_dir
        puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
        system("curl #{geronimo_package}/#{filename} -s -o #{filename}")
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
-       system "unzip -oq -d #{@build_path} #{filename} 2>&1"
+       system "unzip -oq -d #{geronimo_dir} #{filename} 2>&1"
        puts "(#{(Time.now - download_start_time).duration})"
-        if File.exists?("#{@build_path}/#{filename}/bin/geronimo.sh")
+        if File.exists?("#{geronimo_dir}/bin/geronimo.sh")
         puts "Retrieved Geronimo"
       else
          puts "unable to Retrieve Geronimo"
@@ -58,6 +58,9 @@ module LanguagePack
     
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
+    end
+     def geronimo_dir
+      ".geronimo"
     end
     def release
       {
