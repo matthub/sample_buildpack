@@ -46,7 +46,7 @@ module LanguagePack
        download_start_time = Time.now
        system "unzip -oq -d #{geronimo_dir} #{filename} 2>&1"
        puts "(#{(Time.now - download_start_time).duration})"
-        if File.exists?("#{geronimo_dir}/bin/geronimo.sh")
+        if File.exists?("#{geronimo_dir}/geronimo-tomcat6-javaee5-2.2.1/bin/geronimo.sh")
         puts "Retrieved Geronimo"
       else
          puts "unable to Retrieve Geronimo"
