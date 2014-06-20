@@ -3,6 +3,7 @@ require "fileutils"
 require "language_pack/package_fetcher"
 require "language_pack/format_duration"
 require 'fileutils'
+require "language_pack/java"
 
 module LanguagePack
   class Geronimo
