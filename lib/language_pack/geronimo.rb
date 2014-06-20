@@ -51,26 +51,20 @@ module LanguagePack
        system "unzip -oq -d #{@build_path} #{filename} 2>&1"
        run_with_err_output("mv #{@build_path}/geronimo-tomcat*/* . && " + "rm -rf #{@build_path}/geronimo-tomcat*")
        puts "(#{(Time.now - download_start_time).duration})"
-        if File.exists?("./bin/geronimo.sh")
-        puts "Retrieved Geronimo"
-      else
-         puts "unable to Retrieve Geronimo"
+        
+      unless File.exists?("./bin/geronimo.sh")
+        puts "Unable to retrieve Geronimo"
         exit 1
       end
        
     end
-   def fetch_from_curl(filename, url)
-      puts "Downloading #{filename} from #{url} ..."
-      system("curl #{url}/#{filename} -s -o #{filename}")
-      File.exist?(filename) ? filename : nil
-    end
+  
     
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
-     def geronimo_dir
-      ".geronimo"
-    end
+    
+    
     def release
       {
           "addons" => [],
@@ -78,11 +72,13 @@ module LanguagePack
           "default_process_types" => default_process_types
       }.to_yaml
     end
+    
      def default_process_types
       {
         "web" => "./bin/geronimo.sh run"
       }
     end
+    
      def run_with_err_output(command)
       %x{ #{command} 2>&1 }
     end
