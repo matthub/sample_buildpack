@@ -1,8 +1,8 @@
 
 #!/usr/bin/env ruby
-$stdout.sync = true
+#$stdout.sync = true
 
-$:.unshift File.expand_path("../../lib", __FILE__)
-require "language_pack"
+#$:.unshift File.expand_path("../../lib", __FILE__)
+#require "language_pack"
 
-LanguagePack.release
+#LanguagePack.release
