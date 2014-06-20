@@ -76,6 +76,7 @@ module LanguagePack
      def default_process_types
       {
         "web" => "./bin/geronimo.sh run"
+        puts "Geronimo server started"
       }
     end
     
