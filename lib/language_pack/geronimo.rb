@@ -39,12 +39,12 @@ module LanguagePack
        geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
         FileUtils.mkdir_p geronimo_dir
-      geronimo_zip="#{geronimo_dir}/geronimo.zip"
+       geronimo_zip="#{geronimo_dir}/geronimo.zip"
        puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
-       #system("curl #{geronimo_package}/#{filename} -s -o #{geronimo_zip}")
-       fetch_from_curl(filename,geronimo_package)
-      FileUtils.mv filename, geronimo_zip
+       system("curl #{geronimo_package}/#{filename} -s -o #{filename}")
+      
+       FileUtils.mv filename, geronimo_zip
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
