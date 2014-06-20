@@ -46,7 +46,12 @@ module LanguagePack
        download_start_time = Time.now
        system "unzip -oq -d #{@build_path} #{filename} 2>&1"
        puts "(#{(Time.now - download_start_time).duration})"
-     
+        if File.exists?("#{filename}/bin/geronimo.sh")
+        puts "Retrieved Geronimo"
+      else
+         puts "unable to Retrieve Geronimo"
+        exit 1
+      end
        
     end
    
@@ -56,7 +61,7 @@ module LanguagePack
     end
      def default_process_types
       {
-        "web" => "./bin/geronimo run"
+        "web" => "./bin/geronimo.sh run"
       }
     end
     
