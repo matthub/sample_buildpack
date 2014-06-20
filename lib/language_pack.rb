@@ -17,7 +17,7 @@ module LanguagePack
     
   end
 
-  def self.release(*args)
+  def self.release()
      object= Geronimo.new()
     object.release
   end
