@@ -42,7 +42,9 @@ module LanguagePack
       geronimo_zip="#{geronimo_dir}/geronimo.zip"
        puts "------->Downloading #{filename}  from #{geronimo_package}"
        download_start_time = Time.now
-       system("curl #{geronimo_package}/#{filename} -s -o #{geronimo_zip}")
+       #system("curl #{geronimo_package}/#{filename} -s -o #{geronimo_zip}")
+       fetch_from_curl(filename,geronimo_package)
+      FileUtils.mv filename, geronimo_zip
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
@@ -58,7 +60,11 @@ module LanguagePack
       end
        
     end
-   
+   def fetch_from_curl(filename, url)
+      puts "Downloading #{filename} from #{url} ..."
+      system("curl #{url}/#{filename} -s -o #{filename}")
+      File.exist?(filename) ? filename : nil
+    end
     
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
