@@ -49,16 +49,15 @@ module LanguagePack
      
        
     end
-    def fetch_from_buildpack_cache(geronimo_package,filename)
-      file_path = File.join(@cache_path, filename)
-      return unless File.exist?(file_path)
-      puts "------>Copying #{filename} from the buildpack cache ..."
-      FileUtils.cp(file_path, ".")
-      File.expand_path(File.join(".", filename))
-    end
+   
     
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
+    end
+     def default_process_types
+      {
+        "web" => "./bin/geronimo run"
+      }
     end
     
   end
