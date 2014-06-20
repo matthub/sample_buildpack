@@ -14,11 +14,12 @@ module LanguagePack
     object1.compile
     object2= Geronimo.new(*args)
     object2.compile
+    object2.release
     
   end
 
-  def self.release
-     object= Geronimo.new
-     object.release
-  end
+  #def self.release
+   #  object= Geronimo.new
+  #   object.release
+  #end
 end
