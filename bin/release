@@ -1,8 +1,9 @@
-
-#!/usr/bin/env ruby
-#$stdout.sync = true
-
-#$:.unshift File.expand_path("../../lib", __FILE__)
-#require "language_pack"
-
-#LanguagePack.release
+#!/usr/bin/env bash
+# bin/release <build-dir>
+ 
+cat << EOF
+addons: []
+default_process_types: {
+web: ./start.sh
+}
+EOF
