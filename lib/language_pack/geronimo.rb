@@ -36,6 +36,7 @@ module LanguagePack
     def install_geronimo
        
        #puts geronimo_package
+       FileUtils.mkdir_p geronimo_home
        geronimo_package = geronimo_config["repository_root"]
        filename = geronimo_config["filename"]
         #FileUtils.mkdir_p geronimo_dir
@@ -48,11 +49,11 @@ module LanguagePack
        puts "(#{(Time.now - download_start_time).duration})"
        puts "------->Unpacking Geronimo"
        download_start_time = Time.now
-       system "unzip -oq -d #{@build_path} #{filename} 2>&1"
-       run_with_err_output("mv #{@build_path}/geronimo-tomcat*/* . && " + "rm -rf #{@build_path}/geronimo-tomcat*")
+       system "unzip -oq -d #{geronimo_home} #{filename} 2>&1"
+       run_with_err_output("mv #{geronimo_home}/geronimo-tomcat*/* #{geronimo_home} && " + "rm -rf #{geronimo_home}/geronimo-tomcat*")
        puts "(#{(Time.now - download_start_time).duration})"
         
-      unless File.exists?("./bin/geronimo.sh")
+      unless File.exists?("#{geronimo_home}/bin/geronimo.sh")
         puts "Unable to retrieve Geronimo"
         exit 1
       end
@@ -63,7 +64,9 @@ module LanguagePack
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
-    
+    def geronimo_home
+      ".geronimo_home"
+    end
     
     def release
       {
@@ -76,7 +79,6 @@ module LanguagePack
      def default_process_types
       {
         "web" => "./bin/geronimo.sh run"
-        puts "Geronimo server started"
       }
     end
     
