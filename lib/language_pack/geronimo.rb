@@ -27,7 +27,8 @@ module LanguagePack
     end
     def compile
       Dir.chdir(@build_path) do
-       
+         FileUtils.mkdir_p app_home
+         run_with_err_output("mv * #{app_home}")
         install_geronimo
         #modify_web_xml
       end
@@ -57,6 +58,7 @@ module LanguagePack
         puts "Unable to retrieve Geronimo"
         exit 1
       end
+      
        
     end
   
@@ -70,12 +72,15 @@ module LanguagePack
       ".geronimo_home"
     end
     
-    
+    def app_home
+      ".app_home"
+    end
     
     
      def run_with_err_output(command)
       %x{ #{command} 2>&1 }
     end
+    
     
   end
 end
