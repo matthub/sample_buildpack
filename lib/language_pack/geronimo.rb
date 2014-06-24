@@ -64,16 +64,14 @@ module LanguagePack
      def geronimo_config
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
+    
+    
     def geronimo_home
       ".geronimo_home"
     end
     
     
-     def default_process_types
-      {
-        "web" => ""
-      }
-    end
+    
     
      def run_with_err_output(command)
       %x{ #{command} 2>&1 }
