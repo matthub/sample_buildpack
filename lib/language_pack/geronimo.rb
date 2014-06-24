@@ -29,6 +29,8 @@ module LanguagePack
       Dir.chdir(@build_path) do
          FileUtils.mkdir_p app_home
          run_with_err_output("mv * #{app_home}")
+         files = Dir.glob("*")
+         puts files
         install_geronimo
         #modify_web_xml
       end
