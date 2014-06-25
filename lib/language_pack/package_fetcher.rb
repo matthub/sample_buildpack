@@ -15,9 +15,9 @@ module LanguagePack
     end
 
     def fetch_jdk_package(version)
-      jdk_package = packages_config["openjdk"].find { |p| p["version"] == version }
+      jdk_package = packages_config["openjdk"]
 
-      raise "Unsupported Java version: #{version}" unless jdk_package
+    
 
       #fetch_from_buildpack_cache(jdk_package["jre"]) ||
       fetch_from_curl(jdk_package["full"], VENDOR_URL)
