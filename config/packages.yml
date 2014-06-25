@@ -1,2 +1,5 @@
-repository_root: "http://download.pivotal.io.s3.amazonaws.com/openjdk/lucid/x86_64"
-version: 1.7.0_+
+---
+openjdk:
+- version: "1.7"
+  full: openjdk7-u7-heroku-temaki-b30.tar.gz
+  jre: openjdk-1.7.0_25.tar.gz
