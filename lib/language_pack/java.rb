@@ -66,6 +66,7 @@ module LanguagePack
       download_start_time = Time.now
       fetched_package = fetch_jdk_package(java_version)
       FileUtils.mv fetched_package, jdk_tarball
+       puts "(#{(Time.now - download_start_time).duration})"
     end
 
     def jdk_dir
