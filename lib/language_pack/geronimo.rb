@@ -74,7 +74,7 @@ module LanguagePack
     end
     def move_geronimo_to_root
       run_with_err_output("mv #{geronimo_home}/* . && rm -rf #{geronimo_home}")
-      "console" => "deploy --user system --password manager deploy --inPlace #{@build_path/app_home}"
+      
          
     end
     def geronimo_home
