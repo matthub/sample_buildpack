@@ -7,7 +7,7 @@ module LanguagePack
   class Java
     
     include LanguagePack::PackageFetcher
-    DEFAULT_JDK_VERSION = "1.7".freeze
+    #DEFAULT_JDK_VERSION = "1.7".freeze
     
     
 
@@ -56,7 +56,8 @@ module LanguagePack
     end
 
     def java_version
-      @java_version ||= system_properties["java.runtime.version"] || DEFAULT_JDK_VERSION
+      #@java_version ||= system_properties["java.runtime.version"] || DEFAULT_JDK_VERSION
+      @java_version=1.7
     end
 
     def system_properties
