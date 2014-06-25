@@ -32,7 +32,7 @@ module LanguagePack
         install_geronimo
       
         copy_webapp_to_geronimo
-        ove_geronimo_to_root
+        move_geronimo_to_root
       end
     end
    
