@@ -19,7 +19,7 @@ module LanguagePack
 
       raise "Unsupported Java version: #{version}" unless jdk_package
 
-      fetch_from_buildpack_cache(jdk_package["jre"]) ||
+      #fetch_from_buildpack_cache(jdk_package["jre"]) ||
       fetch_from_curl(jdk_package["full"], VENDOR_URL)
     end
 
