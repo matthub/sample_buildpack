@@ -32,7 +32,7 @@ module LanguagePack
         run_with_err_output("mv * #{app_home}")
         install_geronimo
       
-        copy_webapp_to_geronimo
+       # copy_webapp_to_geronimo
         move_geronimo_to_root
       end
     end
@@ -74,6 +74,9 @@ module LanguagePack
     end
     def move_geronimo_to_root
       run_with_err_output("mv #{geronimo_home}/* . && rm -rf #{geronimo_home}")
+       Dir.chdir(./bin) do
+          run_with_err_output("deploy --user system --password manager deploy --inPlace ./app_home")
+      end
     end
     def geronimo_home
       ".geronimo_home"
