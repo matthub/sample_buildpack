@@ -28,7 +28,8 @@ module LanguagePack
     def compile
       Dir.chdir(@build_path) do
          
-        
+        FileUtils.mkdir_p app_home
+        run_with_err_output("mv * #{app_home}")
         install_geronimo
       
         copy_webapp_to_geronimo
@@ -69,13 +70,16 @@ module LanguagePack
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
     def copy_webapp_to_geronimo
-      run_with_err_output("mv * #{geronimo_home}/deploy")
+      run_with_err_output("mv #{app_home}/* #{geronimo_home}/deploy")
     end
     def move_geronimo_to_root
       run_with_err_output("mv #{geronimo_home}/* . && rm -rf #{geronimo_home}")
     end
     def geronimo_home
       ".geronimo_home"
+    end
+    def app_home
+      ".app_home"
     end
     
     def app_home
