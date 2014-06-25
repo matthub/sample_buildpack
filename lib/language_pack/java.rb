@@ -1,15 +1,15 @@
 require "yaml"
 require "fileutils"
-require "language_pack/package_fetcher"
-require "language_pack/format_duration"
 
 module LanguagePack
   class Java
-    
     include LanguagePack::PackageFetcher
-    #DEFAULT_JDK_VERSION = "1.7".freeze
-    
-    
+
+    DEFAULT_JDK_VERSION = "1.7".freeze
+
+    def self.use?
+      Dir.glob("**/*.jar").any? || Dir.glob("**/*.class").any?
+    end
 
     attr_reader :build_path, :cache_path
 
@@ -20,33 +20,27 @@ module LanguagePack
       @build_path = build_path
       @cache_path = cache_path
     end
-    
+
+    def name
+      "Java"
+    end
+
     def compile
-      Dir.chdir(@build_path) do
+      Dir.chdir(build_path) do
         install_java
-        
-        
         setup_profiled
       end
     end
 
-    def name
-      "Java"
-  end
-      
-    
-
     def install_java
       FileUtils.mkdir_p jdk_dir
       jdk_tarball = "#{jdk_dir}/jdk.tar.gz"
-      download_start_time = Time.now
-      download_jdk jdk_tarball
-      puts "(#{(Time.now - download_start_time).duration})"
 
-      puts "------->Unpacking JDK to #{jdk_dir}"
-      download_start_time = Time.now
+      download_jdk jdk_tarball
+
+      puts "Unpacking JDK to #{jdk_dir}"
       tar_output = run_with_err_output "tar pxzf #{jdk_tarball} -C #{jdk_dir}"
-      puts "(#{(Time.now - download_start_time).duration})"
+
       FileUtils.rm_rf jdk_tarball
       unless File.exists?("#{jdk_dir}/bin/java")
         puts "Unable to retrieve the JDK"
@@ -56,8 +50,7 @@ module LanguagePack
     end
 
     def java_version
-      #@java_version ||= system_properties["java.runtime.version"] || DEFAULT_JDK_VERSION
-      @java_version=1.7
+      @java_version ||= system_properties["java.runtime.version"] || DEFAULT_JDK_VERSION
     end
 
     def system_properties
@@ -149,4 +142,3 @@ fi
     end
   end
 end
-
