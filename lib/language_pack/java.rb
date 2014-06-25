@@ -38,7 +38,7 @@ module LanguagePack
     def install_java
       FileUtils.mkdir_p jdk_dir
       jdk_tarball = "#{jdk_dir}/jdk.tar.gz"
-
+      
       download_jdk jdk_tarball
 
       puts "Unpacking JDK to #{jdk_dir}"
@@ -63,6 +63,7 @@ module LanguagePack
 
     def download_jdk(jdk_tarball)
       puts "Downloading JDK..."
+      download_start_time = Time.now
       fetched_package = fetch_jdk_package(java_version)
       FileUtils.mv fetched_package, jdk_tarball
     end
