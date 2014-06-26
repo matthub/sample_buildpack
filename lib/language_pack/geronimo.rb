@@ -35,11 +35,11 @@ module LanguagePack
        
         install_geronimo
       
-        copy_webapp_to_geronimo
+        #copy_webapp_to_geronimo
         move_geronimo_to_root
-         files = Dir.glob("*") 
-         puts "*********"
-         puts files
+         Dir.chdir(bin) do
+           run_with_err_output("deploy --user system --password manager deploy --inPlace #{app_home}")
+      end
       end
     end
    
