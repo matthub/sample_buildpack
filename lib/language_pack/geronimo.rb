@@ -39,7 +39,7 @@ module LanguagePack
         move_geronimo_to_root
          Dir.chdir(/bin) do
            run_with_err_output("deploy --user system --password manager deploy --inPlace #{app_home}")
-      end
+         end
       end
     end
    
