@@ -32,7 +32,7 @@ module LanguagePack
         run_with_err_output("mv * #{app_home}")
         install_geronimo
       
-       # copy_webapp_to_geronimo
+        copy_webapp_to_geronimo
         move_geronimo_to_root
       end
     end
