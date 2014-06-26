@@ -41,7 +41,7 @@ module LanguagePack
       
       download_jdk jdk_tarball
 
-      puts "Unpacking JDK to #{jdk_dir}"
+      puts "------>Unpacking JDK to #{jdk_dir}"
        download_start_time = Time.now
       tar_output = run_with_err_output "tar pxzf #{jdk_tarball} -C #{jdk_dir}"
        puts "(#{(Time.now - download_start_time).duration})"
@@ -63,7 +63,7 @@ module LanguagePack
     end
 
     def download_jdk(jdk_tarball)
-      puts "Downloading JDK..."
+      puts "----->Downloading JDK..."
       download_start_time = Time.now
       fetched_package = fetch_jdk_package(java_version)
       FileUtils.mv fetched_package, jdk_tarball
