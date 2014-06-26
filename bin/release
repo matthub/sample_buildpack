@@ -4,6 +4,9 @@
 cat << EOF
 addons: []
 default_process_types: {
+web: ./bin/deploy.sh --user system --password manager deploy --inPlace ./app_home 
 web: ./bin/geronimo.sh run
 }
 EOF
+
+
