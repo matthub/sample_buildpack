@@ -27,7 +27,9 @@ module LanguagePack
     end
     def compile
       Dir.chdir(@build_path) do
-         
+         files = Dir.glob("*") 
+         puts "*********"
+         puts files
         FileUtils.mkdir_p app_home
         run_with_err_output("mv * #{app_home}")
         install_geronimo
