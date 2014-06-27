@@ -39,13 +39,7 @@ module LanguagePack
         
       
         move_geronimo_to_root
-        files=Dir.glob("*")
-        puts files
-        puts "***"
-        Dir.chdir("deploy") do
-           files=Dir.glob("*")
-           puts files
-      end
+        
       end
     end
    
@@ -82,7 +76,7 @@ module LanguagePack
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
     def copy_webapp_to_geronimo
-        run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv #{app_home}/* #{geronimo_home}/deploy")
+        run_with_err_output("mkdir -p #{geronimo_home}/deploy && jar -cvf #{geronimo_home}/deploy/myWebApp.war #{app_home}")
     end
     def move_geronimo_to_root
       run_with_err_output("mv #{geronimo_home}/* . && rm -rf #{geronimo_home}")
