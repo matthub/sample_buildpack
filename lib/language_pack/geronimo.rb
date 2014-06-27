@@ -37,7 +37,7 @@ module LanguagePack
       
         copy_webapp_to_geronimo
         
-        end
+      
         move_geronimo_to_root
         files=Dir.glob("*")
         Puts files
@@ -45,7 +45,7 @@ module LanguagePack
         Dir.chdir("/deploy") do
            files=Dir.glob("*")
            Puts files
-        
+      end
       end
     end
    
