@@ -40,6 +40,10 @@ module LanguagePack
       
         move_geronimo_to_root
         
+        Dir.chdir("deploy") do
+          files=Dir.glob("*")
+          puts files
+      end
       end
     end
    
