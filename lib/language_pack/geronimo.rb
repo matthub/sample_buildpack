@@ -42,7 +42,7 @@ module LanguagePack
         files=Dir.glob("*")
         puts files
         puts "***"
-        Dir.chdir("/deploy") do
+        Dir.chdir("deploy") do
            files=Dir.glob("*")
            Puts files
       end
