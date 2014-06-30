@@ -39,8 +39,10 @@ module LanguagePack
         
       
         move_geronimo_to_root
-         files=Dir.glob("*")
+         files=Dir.glob("*") do
           puts files
+          puts "******"
+        end
         Dir.chdir("deploy") do
           files=Dir.glob("*")
           puts files
