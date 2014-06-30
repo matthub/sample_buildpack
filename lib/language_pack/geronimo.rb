@@ -85,7 +85,7 @@ module LanguagePack
     def copy_webapp_to_geronimo
         run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv . #{geronimo_home}/deploy")
       
-       run_with_err_output("jar -cvf MyWebApp.war #{geronimo_home}/deploy/*")
+       run_with_err_output("jar -cvf MyWebApp.war #{geronimo_home}/deploy")
        
        
       
