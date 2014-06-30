@@ -32,7 +32,7 @@ module LanguagePack
         #run_with_err_output("mv * #{app_home}")
          
          #Dir.chdir(app_home) do
-      
+      run_with_err_output("jar -cvf MyWebApp.war *")
         install_geronimo
       
         copy_webapp_to_geronimo
@@ -82,8 +82,7 @@ module LanguagePack
     end
     def copy_webapp_to_geronimo
         run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv * #{geronimo_home}/deploy")
-        Dir.chdir("#{geronimo_home}/deploy") do
-        run_with_err_output("jar -cvf #{geronimo_home}/deploy/MyWebApp.war *")
+       
       end
     end
     def move_geronimo_to_root
