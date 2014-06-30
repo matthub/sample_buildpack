@@ -69,6 +69,7 @@ module LanguagePack
        download_start_time = Time.now
        system "unzip -oq -d #{geronimo_home} #{filename} 2>&1"
        run_with_err_output("mv #{geronimo_home}/geronimo-tomcat*/* #{geronimo_home} && " + "rm -rf #{geronimo_home}/geronimo-tomcat*")
+        run_with_err_output("rm -rf geronimo.zip")
        puts "(#{(Time.now - download_start_time).duration})"
         
       unless File.exists?("#{geronimo_home}/bin/geronimo.sh")
