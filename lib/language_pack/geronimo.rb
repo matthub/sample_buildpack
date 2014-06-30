@@ -31,8 +31,9 @@ module LanguagePack
         FileUtils.mkdir_p app_home
         run_with_err_output("mv * #{app_home}")
          
-         #Dir.chdir(app_home) do
-      #run_with_err_output("jar -cvf MyWebApp.war *")
+        Dir.chdir(app_home) do
+         run_with_err_output("jar -cvf MyWebApp.war *")
+         end
         install_geronimo
       
         copy_webapp_to_geronimo
@@ -40,10 +41,11 @@ module LanguagePack
       
         move_geronimo_to_root
         
-        Dir.chdir("bin") do
-          
-          run_with_err_output("deploy --user system --password manager deploy --inplace #{app_home}")
-      end
+        Dir.chdir("deploy") do
+          files=Dir.glob("*")      
+           puts files
+      
+         end
       end
     end
    
@@ -81,7 +83,7 @@ module LanguagePack
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
     def copy_webapp_to_geronimo
-       # run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv * #{geronimo_home}/deploy")
+        run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv #{app_home}/* #{geronimo_home}/deploy")
        
       
     end
@@ -97,9 +99,7 @@ module LanguagePack
       ".app_home"
     end
     
-    def app_home
-      ".app_home"
-    end
+   
     
     
      def run_with_err_output(command)
