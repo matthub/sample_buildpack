@@ -30,9 +30,12 @@ module LanguagePack
         
         FileUtils.mkdir_p app_home
         run_with_err_output("mv * #{app_home}")
-        
-        
-       
+         Dir.chdir("app_home") do
+        files=Dir.glob("*") do
+          puts files
+          
+        end
+       puts "****"
         install_geronimo
       
         copy_webapp_to_geronimo
