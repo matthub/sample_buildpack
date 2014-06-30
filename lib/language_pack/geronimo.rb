@@ -28,14 +28,15 @@ module LanguagePack
     def compile
       Dir.chdir(@build_path) do
         
-        FileUtils.mkdir_p app_home
-        run_with_err_output("mv * #{app_home}")
-         Dir.chdir(app_home) do
-        files=Dir.glob("*") 
-          puts files
+        #FileUtils.mkdir_p app_home
+        #run_with_err_output("mv * #{app_home}")
+         
+         #Dir.chdir(app_home) do
+      #  files=Dir.glob("*") 
+       #   puts files
           
-        end
-       puts "****"
+        #end
+       #puts "****"
         install_geronimo
       
         copy_webapp_to_geronimo
@@ -83,7 +84,7 @@ module LanguagePack
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
     def copy_webapp_to_geronimo
-        run_with_err_output("mkdir -p #{geronimo_home}/deploy && jar -cvf #{geronimo_home}/deploy/myWebApp.war #{app_home}/*")
+        run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv * #{geronimo_home}/deploy")
     end
     def move_geronimo_to_root
       run_with_err_output("mv #{geronimo_home}/* . && rm -rf #{geronimo_home}")
