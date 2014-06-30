@@ -32,11 +32,11 @@ module LanguagePack
         #run_with_err_output("mv * #{app_home}")
          
          #Dir.chdir(app_home) do
-      #  files=Dir.glob("*") 
-       #   puts files
+      files=Dir.glob("*") 
+          puts files
           
-        #end
-       #puts "****"
+        
+       puts "****"
         install_geronimo
       
         copy_webapp_to_geronimo
