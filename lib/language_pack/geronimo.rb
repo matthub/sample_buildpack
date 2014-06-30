@@ -46,6 +46,10 @@ module LanguagePack
            puts files
       
          end
+         files=Dir.glob("*")      
+           puts files
+      
+         
       end
     end
    
