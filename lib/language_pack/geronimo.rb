@@ -42,7 +42,7 @@ module LanguagePack
         
         Dir.chdir("bin") do
           
-          run_with_err_output("deploy --user system --password manager deploy #{app_home}")
+          run_with_err_output("deploy --user system --password manager deploy --inplace #{app_home}")
       end
       end
     end
