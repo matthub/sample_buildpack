@@ -31,7 +31,7 @@ module LanguagePack
         FileUtils.mkdir_p app_home
         run_with_err_output("mv * #{app_home}")
          Dir.chdir("app_home") do
-        files=Dir.glob("*") do
+        files=Dir.glob("*") 
           puts files
           
         end
@@ -42,10 +42,7 @@ module LanguagePack
         
       
         move_geronimo_to_root
-         files=Dir.glob("*") do
-          puts files
-          puts "******"
-        end
+        
         Dir.chdir("deploy") do
           files=Dir.glob("*")
           puts files
