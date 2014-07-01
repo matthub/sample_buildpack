@@ -27,6 +27,7 @@ module LanguagePack
     end
     def compile
       Dir.chdir(@build_path) do
+        run_with_err_output("jar -cvf MyWebApp.war .")
         puts "***files in buildpath:\n"
         files=Dir.glob("*")      
         puts files
