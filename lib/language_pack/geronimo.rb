@@ -28,8 +28,8 @@ module LanguagePack
     def compile
       Dir.chdir(@build_path) do
         
-        #FileUtils.mkdir_p app_home
-        #run_with_err_output("mv * #{app_home}")
+        FileUtils.mkdir_p app_home
+      run_with_err_output("mv * #{app_home}")
          
        
        # run_with_err_output("jar -cvf MyWebApp.war .")
@@ -87,9 +87,9 @@ module LanguagePack
       YAML.load_file(File.expand_path(GERONIMO_CONFIG))
     end
     def copy_webapp_to_geronimo
-        run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv . #{geronimo_home}/deploy")
+        run_with_err_output("mkdir -p #{geronimo_home}/deploy && mv #{app_home}/* #{geronimo_home}/deploy")
       
-       run_with_err_output("jar -cvf MyWebApp.war #{geronimo_home}/deploy")
+       #run_with_err_output("jar -cvf MyWebApp.war #{geronimo_home}/deploy")
        
        
       
