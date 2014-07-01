@@ -27,14 +27,11 @@ module LanguagePack
     end
     def compile
       Dir.chdir(@build_path) do
-       # run_with_err_output("jar -cvf MyWebApp.war .")
-        puts "***files in buildpath:\n"
-        files=Dir.glob("*")      
-        puts files
-       # FileUtils.mkdir_p app_home
-        #run_with_err_output("mv * #{app_home}")
        
-        #run_with_err_output("#{jdk_dir}/bin/jar -cvf MyWebApp.war #{app_home}")
+       #FileUtils.mkdir_p app_home
+      #  run_with_err_output("mv * #{app_home}")
+       
+        
       
         install_geronimo
       
@@ -43,12 +40,12 @@ module LanguagePack
       
         move_geronimo_to_root
         
-        #Dir.chdir("deploy") do
-         # puts "***files in deploy folder\n"
-          #files=Dir.glob("*")      
-          # puts files
+        Dir.chdir("deploy") do
+          puts "***files in deploy folder\n"
+          files=Dir.glob("*")      
+           puts files
       
-         #end
+         end
          
       
          
