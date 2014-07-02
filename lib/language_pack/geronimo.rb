@@ -30,9 +30,7 @@ module LanguagePack
         install_geronimo
         copy_webapp_to_geronimo
         move_geronimo_to_root
-        setup_profiled
-        #puts .var/config/config-substitutions.properties['HTTPPort']
-        #.var/config/config-substitutions.properties[HTTPPort]=$PORT
+        puts GERONIMO_OPTS
       end
       
     end
@@ -79,18 +77,7 @@ module LanguagePack
       %x{ #{command} 2>&1 }
     end
     
-    def setup_profiled
-      FileUtils.mkdir_p "#{build_path}/.profile.d"
-      File.open("#{build_path}/.profile.d/gero.sh", "a") { |file| file.puts(bash_script) }
-    end
     
-    
-   def bash_script
-      <<-BASH
-#!/bin/bash
-export GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort:$PORT"
-BASH
-    end
    
    
   end
