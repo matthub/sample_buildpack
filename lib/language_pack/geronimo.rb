@@ -30,9 +30,7 @@ module LanguagePack
         install_geronimo
         copy_webapp_to_geronimo
         move_geronimo_to_root
-        "-Dorg.apache.geronimo.config.substitution.HTTPPort"="$PORT"
-        
-        ENV['GERONIMO_OPTS'] = '-Dorg.apache.geronimo.config.substitution.HTTPPort'
+        bash_script
       end
     end
    
@@ -77,6 +75,13 @@ module LanguagePack
     def run_with_err_output(command)
       %x{ #{command} 2>&1 }
     end
+   def bash_script
+      <<-BASH
+#!/bin/bash
+export GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort:$PORT"
+BASH
+    end
+   
    
   end
 end
