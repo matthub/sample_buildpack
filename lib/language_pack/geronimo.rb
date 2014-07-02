@@ -30,8 +30,7 @@ module LanguagePack
         install_geronimo
         copy_webapp_to_geronimo
         move_geronimo_to_root
-        GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort=$PORT"
-        run_with_err_output("export GERONIMO_OPTS")
+        
       end
     end
    
@@ -76,5 +75,6 @@ module LanguagePack
     def run_with_err_output(command)
       %x{ #{command} 2>&1 }
     end
+   
   end
 end
