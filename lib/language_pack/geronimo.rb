@@ -77,6 +77,11 @@ module LanguagePack
       %x{ #{command} 2>&1 }
     end
     
+     def geronimo_opts
+      {
+        "-Dorg.apache.geronimo.config.substitution.HTTPPort" => "$PORT"
+      }
+     end
     
    
    
