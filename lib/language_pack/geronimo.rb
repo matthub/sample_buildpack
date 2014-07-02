@@ -30,9 +30,11 @@ module LanguagePack
         install_geronimo
         copy_webapp_to_geronimo
         move_geronimo_to_root
+        setup_profiled
         #puts .var/config/config-substitutions.properties['HTTPPort']
         #.var/config/config-substitutions.properties[HTTPPort]=$PORT
       end
+      
     end
    
     def install_geronimo
@@ -76,6 +78,13 @@ module LanguagePack
     def run_with_err_output(command)
       %x{ #{command} 2>&1 }
     end
+    
+    def setup_profiled
+      FileUtils.mkdir_p "#{build_path}/.profile.d"
+      File.open("#{build_path}/.profile.d/gero.sh", "a") { |file| file.puts(bash_script) }
+    end
+    
+    
    def bash_script
       <<-BASH
 #!/bin/bash
