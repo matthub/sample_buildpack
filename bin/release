@@ -3,8 +3,6 @@
  
 cat << EOF
 addons: []
-config_vars:
-    GERONIMO_OPTS: -Dorg.apache.geronimo.config.substitution.HTTPPort:$PORT
 default_process_types: {
 web: ./bin/geronimo.sh run
 }
