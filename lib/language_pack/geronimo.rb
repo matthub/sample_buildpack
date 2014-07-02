@@ -30,7 +30,7 @@ module LanguagePack
         install_geronimo
         copy_webapp_to_geronimo
         move_geronimo_to_root
-        
+        $./var/config/config-substitutions.properties[HTTPPort]=$PORT
       end
     end
    
