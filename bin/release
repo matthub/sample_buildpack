@@ -4,6 +4,7 @@
 cat << EOF
 addons: []
 default_process_types: {
+ web: ./bin/geronimo.sh run
 }
 EOF
 
