@@ -4,7 +4,7 @@
 cat << EOF
 addons: []
 default_process_types: {
-web: export GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort=$PORT" && ./bin/geronimo.sh run
+    web: GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort=$PORT" ./bin/geronimo.sh run
 }
 EOF
 
