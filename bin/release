@@ -6,7 +6,7 @@ addons: []
 config_vars:
     GERONIMO_OPTS: "-Dorg.apache.geronimo.config.substitution.HTTPPort=$PORT"
 default_process_types: {
-    web: GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort=$PORT" ./bin/geronimo.sh run
+    web: GERONIMO_OPTS="-Dorg.apache.geronimo.config.substitution.HTTPPort=$PORT" echo "$PORT" && ./bin/geronimo.sh run
 }
 EOF
 
